@@ -6,21 +6,30 @@
 </head>
 <body>
     <nav>
-        <div class="logo">SEND</div>
+        <div class="logo">MyCurriculum</div>
         <div class="nav-items">
         <a href="/">Before Fall 2023</a> <a href="/">Fall 2023 and After</a> 
         </div>
     </nav>
+    
+        
     <section class="hero">
         <div class="hero-container">
-        <div class="column-left">
-            <h1>MyCurriculum</h1>
-            <p>
-            This is a website  that CUA Computer Science students will be able
-            to use to see their curriculum requirements and track their progress
-            </p>
-            <button>Fall 2017</button>
-            <button>Fall 2023</button>
+            <div class="column-left">
+                <h1>MyCurriculum</h1>
+                <p>
+                This is a website  that CUA Computer Science students will be able
+                to use to see their curriculum requirements and track their progress
+                </p>
+                <button class="buttonlinks" onclick="openPage('Fall 2017', this)">Fall 2017</button>
+                <button class="buttonlinks" onclick="openPage('Fall 2023', this)">Fall 2023</button>
+            </div>
+        
+        <div id="Fall 2017" class="buttoncontent">
+            <h3>These are the reqs for fall 2017</h3>
+        </div>
+        <div id="Fall 2023" class="buttoncontent">
+            <h3>These are the reqs for fall 2023</h3>
         </div>
         <div class="column-right">
             <img
