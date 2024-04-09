@@ -1,0 +1,27 @@
+{
+  "name": "my_curriculum",
+  "version": "1.0.0",
+  "description": "<!DOCTYPE html> <html> <head>     <title>Clas Tracker</title>     <link rel=\"stylesheet\" href=\"styles.css\"> </head> <body>     <h1>Class Tracker for My Major</h1>     <div id=\"class-list\"></div>     <script src=\"script.js\"></script> </body> </html>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeff-Koef/my_curriculum.git"
+  },
+  "keywords": [
+    "express",
+    "middleware"
+  ],
+  "author": "jeffrey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeff-Koef/my_curriculum/issues"
+  },
+  "homepage": "https://github.com/Jeff-Koef/my_curriculum#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
