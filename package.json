@@ -2,7 +2,7 @@
   "name": "my_curriculum",
   "version": "1.0.0",
   "description": "<!DOCTYPE html> <html> <head>     <title>Clas Tracker</title>     <link rel=\"stylesheet\" href=\"styles.css\"> </head> <body>     <h1>Class Tracker for My Major</h1>     <div id=\"class-list\"></div>     <script src=\"script.js\"></script> </body> </html>",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -22,6 +22,13 @@
   },
   "homepage": "https://github.com/Jeff-Koef/my_curriculum#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "sqlite3": "^5.1.7"
   }
 }

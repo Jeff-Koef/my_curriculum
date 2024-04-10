@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">MyCurriculum</div>
+        <div class="nav-items">
+        <a href="/">Before Fall 2023</a> <a href="/">Fall 2023 and After</a> 
+        </div>
+    </nav>
+    
+        
+    <section class="hero">
+        <div class="hero-container">
+            <div class="column-left">
+                <h1>MyCurriculum</h1>
+                <p>
+                This is a website  that CUA Computer Science students will be able
+                to use to see their curriculum requirements and track their progress
+                </p>
+                <button class="buttonlinks" onclick="openPage('Fall 2017', this)">Fall 2017</button>
+                <button class="buttonlinks" onclick="openPage('Fall 2023', this)">Fall 2023</button>
+            </div>
+        
+        <div id="Fall 2017" class="buttoncontent">
+            <h3>These are the reqs for fall 2017</h3>
+        </div>
+        <div id="Fall 2023" class="buttoncontent">
+            <h3>These are the reqs for fall 2023</h3>
+        </div>
+        <div class="column-right">
+            <form class="signup-form">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <!-- Link Button Below the Form -->
+            <a href="signup.html" class="button-link" style="margin-top: 20px; display: block;">Go to Other Page</a>
+        </div>
+        
+        </div>
+    </section>
+
+    <body>
+        <h1>Simple Node/Express App</h1>
+        <h2>Sign Up</h2>
+        <form id="dataForm">
+            <input type="email" id="emailInputSignup" placeholder="Enter your email..." required>
+            <input type="password" id="passwordInputSignup" placeholder="Enter your password..." required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="emailInputLogin" placeholder="Enter your email..." required>
+            <input type="password" id="passwordInputLogin" placeholder="Enter your password..." required>
+            <button type="submit">Login</button>
+        </form>
+        <script src="script.js"></script>
+    <div id="class-list"></div>
+    <script src="script.js"></script>
+    </div>
+
+</body>
+</html>

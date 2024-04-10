@@ -1,0 +1,202 @@
+body {
+  font-family: Arial, sans-serif;
+}
+h1{
+  color: darkred;
+  font-size: 100px;
+  text-align: center;
+}
+p{
+  color: darkblue;
+  font-size: 25px;
+  text-align: center;
+}
+
+#class-list {
+  margin-top: 20px;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+nav {
+  height: 80px;
+  background: #d8d3bd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem calc((100vw - 1300px) / 2);
+}
+
+.logo {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  padding: 0 1.5rem;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.hero {
+  background: #d8d3bd;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 95vh;
+  padding: 3rem calc((100vw - 1300px) / 2);
+}
+
+.column-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #000;
+  padding: 0rem 2rem;
+}
+
+.column-left h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.column-left p {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+button {
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  border: none;
+  color: #d8d3bd;
+  background: darkblue;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.column-left button.acivate{
+  background-color: #ccc;
+}
+
+.buttoncontent{
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.column-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 2rem;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.signup-container {
+  margin-top: 20px; /* Adds space between the image and the form */
+  width: 100%; /* Ensures the container takes the full width of its parent */
+  max-width: 400px; /* Maximum width of the form for better aesthetics */
+  background-color: #fff; /* Background color for visibility */
+  padding: 20px; /* Padding around the form elements */
+  border-radius: 10px; /* Rounded corners for the form container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  /* Consider additional styling based on your design preference */
+}
+
+/* Input and label styling */
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Label color */
+  font-weight: bold; /* Make labels bold */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; /* Adds space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Rounded corners for inputs */
+}
+
+/* Adjustments for button */
+.login-form button {
+  width: 100%; /* Button width to match inputs */
+  padding: 10px; /* Padding for better sizing */
+  background-color: darkblue; /* Button color */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Cursor to indicate clickable */
+  font-weight: bold; /* Bold text for better visibility */
+}
+
+.login-form button:hover {
+  opacity: 0.9; /* Slight change on hover for feedback */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .hero-container {
+      grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+
+  .column-right {
+      order: 3; /* Ensure right column comes after the content on small screens */
+  }
+
+  .hero-image {
+      max-width: 100%; /* Ensure image is responsive */
+      height: auto; /* Adjust height automatically */
+  }}
+  .button-link {
+    display: inline-block; /* Allows setting padding and centers text */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+}
