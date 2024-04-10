@@ -21,8 +21,10 @@
                 This is a website  that CUA Computer Science students will be able
                 to use to see their curriculum requirements and track their progress
                 </p>
-                <button class="buttonlinks" onclick="openPage('Fall 2017', this)">Fall 2017</button>
+                <!-- 
+                    <button class="buttonlinks" onclick="openPage('Fall 2017', this)">Fall 2017</button>
                 <button class="buttonlinks" onclick="openPage('Fall 2023', this)">Fall 2023</button>
+                -->
             </div>
         
         <div id="Fall 2017" class="buttoncontent">
@@ -32,27 +34,40 @@
             <h3>These are the reqs for fall 2023</h3>
         </div>
         <div class="column-right">
-            <form class="signup-form">
+            <div class="column-left2">
+                <h2>Sign Up</h2>
+                <form id="dataForm">
+                    <div class="input-group">
+                        <input type="email" id="emailInputSignup" placeholder="Enter your email..." required>
+                        <input type="password" id="passwordInputSignup" placeholder="Enter your password..." required>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+            <div class="column-right2">
                 <h2>Login</h2>
-                <div class="input-group">
-                    <label for="username">Username or Email</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <!-- Link Button Below the Form -->
-            <a href="signup.html" class="button-link" style="margin-top: 20px; display: block;">Go to Other Page</a>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="emailInputSignup" placeholder="Enter your email..." required>
+                        <input type="password" id="passwordInputSignup" placeholder="Enter your password..." required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <script src="script.js"></script>
+            </div>
+            
+            <div id="class-list"></div>
+            <script src="script.js"></script>
+            <!-- Link Button Below the Form 
+            <a href="signup.html" class="button-link" style="margin-top: 20px; display: block;">Go to Other Page</a>-->
         </div>
         
         </div>
     </section>
-
-    <body>
+    <!--
+        <body>
         <h1>Simple Node/Express App</h1>
+
         <h2>Sign Up</h2>
         <form id="dataForm">
             <input type="email" id="emailInputSignup" placeholder="Enter your email..." required>
@@ -71,4 +86,6 @@
     </div>
 
 </body>
+    -->
+</body>        
 </html>
