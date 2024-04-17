@@ -224,3 +224,38 @@ button:hover {
 .button-link:hover {
     background-color: #0056b3;
 }
+
+
+
+
+/* Below here is everything for the dashboard.html*/
+.tab{
+  overflow: hidden;
+  border: 1px solid #d8d3bd;
+  background-color: #d8d3bd;
+}
+
+.tab button {
+  background-color: #ed2323;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #ed7171;
+}
+
+.tab button.active {
+  background-color: #ed7171;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

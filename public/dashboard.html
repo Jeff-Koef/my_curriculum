@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Congrats jeff</title>
+    <title>Class Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <p>If i am seeing this text then my login worked</p>
+    <nav>
+        <div class="logo">MyCurriculum</div>
+    </nav>
+
+    <section class = "hero">
+        <div class = "tab">
+            <button class="tablinks" onclick="openTracker(event, 'Before2017')">Before Fall 2017</button>
+            <button class="tablinks" onclick="openTracker(event, 'After2017')">After Fall 2017</button>
+        </div>
+        <div id="Before2017" class="tabcontent">
+            <!--In here goes the content for the before 2017 tab-->
+            <p>Here is the before fall 2017</p>
+        </div>
+        <div id="After2017" class="tabcontent">
+            <!--In here goes the content for the before 2017 tab-->
+            <p>Here is the after fall 2017</p>
+        </div>
+        <script src="script.js"></script>
+    </section>
+
+
 </body>
 </html>
