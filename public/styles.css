@@ -236,7 +236,7 @@ button:hover {
 }
 
 .tab button {
-  background-color: #ed2323;
+  background-color: #ed7171;
   float: left;
   border: none;
   outline: none;
@@ -246,11 +246,11 @@ button:hover {
 }
 
 .tab button:hover {
-  background-color: #ed7171;
+  background-color: #dd2626;
 }
 
 .tab button.active {
-  background-color: #ed7171;
+  background-color: #dd2626;
 }
 
 .tabcontent {
