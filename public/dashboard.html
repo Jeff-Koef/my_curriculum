@@ -2,8 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Congrats jeff</title>
+    <title>Class Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <h2>Update Checkbox Value</h2>
+    <form id="updateForm">
+      <label>
+        <input type="checkbox" id="checkboxValue" name="checkboxValue">
+        Toggle Checkbox
+      </label>
+      <button type="submit">Update</button>
+    </form>
+  
+    <script>
+      document.getElementById('updateForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const isChecked = document.getElementById('checkboxValue').checked;
+  
+        try {
+          const response = await fetch('/updateCheckbox', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ isChecked })
+          });
+  
+          if (response.ok) {
+            alert('Checkbox value updated successfully');
+          } else {
+            alert('Failed to update checkbox value');
+          }
+        } catch (error) {
+          console.error('Error updating checkbox value:', error);
+          alert('Error updating checkbox value');
+        }
+      });
+    </script>
+  </body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         fetch('/all-classes', {
@@ -38,7 +75,6 @@
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.checked = false; // Default unchecked, set true if data indicates otherwise
-                checkbox.setAttribute('onclick', 'return false;'); // To make it non-interactive if needed
                 takenCell.appendChild(checkbox);
                 row.appendChild(takenCell);
                 tbody.appendChild(row);
@@ -58,7 +94,7 @@
         }
         
         th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #dddcdc;
             padding: 8px;
             text-align: left;
         }
@@ -70,7 +106,10 @@
         
     
 <body>
-    <p>If I am seeing this text then my login worked</p>
+    <nav>
+        <div class="logo">MyCurriculum</div>
+    </nav>
+
     <div id="user-info">
         <!-- All class information will be displayed here -->
     </div>

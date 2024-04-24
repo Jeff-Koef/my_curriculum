@@ -79,6 +79,22 @@ app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
 
+app.post('/updateCheckbox', (req, res) => {
+    const isChecked = req.body.isChecked; // Assuming isChecked is sent in request body as boolean
+    const sql = `UPDATE classes SET your_boolean_column = ? WHERE condition_column = ?`;
+    const conditionValue = 'some_condition_value'; // Define your condition
+  
+    connection.query(sql, [isChecked, conditionValue], (err, result) => {
+      if (err) {
+        console.error('Error updating checkbox value:', err);
+        res.status(500).send('Error updating checkbox value');
+      } else {
+        console.log('Checkbox value updated successfully');
+        res.send('Checkbox value updated successfully');
+      }
+    });
+  });
+
 process.on('SIGINT', () => {
     db.close(() => {
         console.log('Database connection closed.');
