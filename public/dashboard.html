@@ -7,21 +7,20 @@
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        fetch('/all-classes', {
+        const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+   
+        fetch(`/user-classes-with-status?userId=${userId}`, { // Fetch classes with their taken status
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(response => response.json())
-        .then(data => {
+        .then(classes => {
             const userInfo = document.getElementById('user-info');
-    
-            // Create table and header row
             const table = document.createElement('table');
-            table.style.width = '100%'; // Set table width
-            table.setAttribute('border', '1'); // Add border to the table for visibility
+            table.style.width = '100%';
+            table.setAttribute('border', '1');
             const thead = document.createElement('thead');
-            table.appendChild(thead);
             const headerRow = document.createElement('tr');
             ['ID', 'Type', 'Number', 'Name', 'Credits', 'Required', 'Prerequisites', 'Taken'].forEach(headerText => {
                 const header = document.createElement('th');
@@ -29,16 +28,17 @@
                 headerRow.appendChild(header);
             });
             thead.appendChild(headerRow);
-    
-            // Create body of the table
+            table.appendChild(thead);
+   
             const tbody = document.createElement('tbody');
-            data.forEach(cls => {
+            classes.forEach(cls => {
                 const row = document.createElement('tr');
                 row.innerHTML = `<td>${cls.id}</td><td>${cls.Type}</td><td>${cls.NUM}</td><td>${cls.Name}</td><td>${cls.Credits}</td><td>${cls.Required}</td><td>${cls.Prec || 'None'}</td>`;
                 const takenCell = document.createElement('td');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.checked = false; // Default unchecked, set true if data indicates otherwise
+                checkbox.checked = !!cls.taken; // Convert to boolean, ensure correct checkbox state
+                checkbox.addEventListener('change', () => updateClassTakenStatus(userId, cls.id, checkbox.checked));
                 takenCell.appendChild(checkbox);
                 row.appendChild(takenCell);
                 tbody.appendChild(row);
@@ -47,6 +47,24 @@
             userInfo.appendChild(table);
         })
         .catch(error => console.error('Error:', error));
+   
+        function updateClassTakenStatus(userId, classId, taken) {
+            fetch('/update-class-taken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ userId, classId, taken })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error updating class taken status:', error);
+            });
+        }
     });
     </script>
     
