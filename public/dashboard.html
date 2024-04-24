@@ -5,42 +5,6 @@
     <title>Class Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <h2>Update Checkbox Value</h2>
-    <form id="updateForm">
-      <label>
-        <input type="checkbox" id="checkboxValue" name="checkboxValue">
-        Toggle Checkbox
-      </label>
-      <button type="submit">Update</button>
-    </form>
-  
-    <script>
-      document.getElementById('updateForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const isChecked = document.getElementById('checkboxValue').checked;
-  
-        try {
-          const response = await fetch('/updateCheckbox', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ isChecked })
-          });
-  
-          if (response.ok) {
-            alert('Checkbox value updated successfully');
-          } else {
-            alert('Failed to update checkbox value');
-          }
-        } catch (error) {
-          console.error('Error updating checkbox value:', error);
-          alert('Error updating checkbox value');
-        }
-      });
-    </script>
-  </body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         fetch('/all-classes', {
