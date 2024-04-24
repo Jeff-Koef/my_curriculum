@@ -1,30 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Class Tracker</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Congrats jeff</title>
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/all-classes', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const userInfo = document.getElementById('user-info');
+    
+            // Create table and header row
+            const table = document.createElement('table');
+            table.style.width = '100%'; // Set table width
+            table.setAttribute('border', '1'); // Add border to the table for visibility
+            const thead = document.createElement('thead');
+            table.appendChild(thead);
+            const headerRow = document.createElement('tr');
+            ['ID', 'Type', 'Number', 'Name', 'Credits', 'Required', 'Prerequisites', 'Taken'].forEach(headerText => {
+                const header = document.createElement('th');
+                header.textContent = headerText;
+                headerRow.appendChild(header);
+            });
+            thead.appendChild(headerRow);
+    
+            // Create body of the table
+            const tbody = document.createElement('tbody');
+            data.forEach(cls => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${cls.id}</td><td>${cls.Type}</td><td>${cls.NUM}</td><td>${cls.Name}</td><td>${cls.Credits}</td><td>${cls.Required}</td><td>${cls.Prec || 'None'}</td>`;
+                const takenCell = document.createElement('td');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = false; // Default unchecked, set true if data indicates otherwise
+                checkbox.setAttribute('onclick', 'return false;'); // To make it non-interactive if needed
+                takenCell.appendChild(checkbox);
+                row.appendChild(takenCell);
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            userInfo.appendChild(table);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    </script>
+    
+    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        </style>
+        
+    
 <body>
-    <nav>
-        <div class="logo">MyCurriculum</div>
-    </nav>
-
-    <section class = "hero">
-        <div class = "tab">
-            <button class="tablinks" onclick="openTracker(event, 'Before2023')">Before Fall 2023</button>
-            <button class="tablinks" onclick="openTracker(event, 'After2023')">After Fall 2023</button>
-        </div>
-        <div id="Before2023" class="tabcontent">
-            <!--In here goes the content for the before 2023 tab-->
-            <p>Here is the before fall 2023</p>
-        </div>
-        <div id="After2023" class="tabcontent">
-            <!--In here goes the content for the before 2023 tab-->
-            <p>Here is the after fall 2023</p>
-        </div>
-        <script src="script.js"></script>
-    </section>
-
-
-</body>
+    <p>If I am seeing this text then my login worked</p>
+    <div id="user-info">
+        <!-- All class information will be displayed here -->
+    </div>
+    
+</body>   
 </html>
