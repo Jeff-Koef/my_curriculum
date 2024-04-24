@@ -74,6 +74,65 @@ app.get('/all-classes', (req, res) => {
         res.json(rows);
     });
 });
+app.post('/update-class-taken', (req, res) => {
+    const { userId, classId, taken } = req.body;
+
+    // Check if the class-user pair already exists
+    const checkSql = `SELECT * FROM userClasses WHERE userId = ? AND classId = ?`;
+    db.get(checkSql, [userId, classId], (err, row) => {
+        if (err) {
+            console.error('Error querying userClasses:', err.message);
+            return res.status(500).send('Internal Server Error');
+        }
+        if (row) {
+            // If exists, update the taken status
+            const updateSql = `UPDATE userClasses SET taken = ? WHERE userId = ? AND classId = ?`;
+            db.run(updateSql, [taken, userId, classId], function(err) {
+                if (err) {
+                    console.error('Failed to update userClasses:', err.message);
+                    return res.status(500).send('Failed to update class taken status');
+                }
+                console.log(`Updated taken status for user ${userId} and class ${classId}`);
+                res.json({ message: 'Class taken status updated successfully' });
+            });
+        } else {
+            // If not exists, insert new record
+            const insertSql = `INSERT INTO userClasses (userId, classId, taken) VALUES (?, ?, ?)`;
+            db.run(insertSql, [userId, classId, taken], function(err) {
+                if (err) {
+                    console.error('Failed to insert into userClasses:', err.message);
+                    return res.status(500).send('Failed to save class taken status');
+                }
+                console.log(`Inserted new class taken status for user ${userId} and class ${classId}`);
+                res.json({ message: 'Class taken status saved successfully' });
+            });
+        }
+    });
+});
+
+app.get('/user-classes-with-status', (req, res) => {
+    const userId = req.query.userId; // Ensure the user ID is securely fetched, perhaps with authentication
+
+    const sql = `
+        SELECT c.id, c.Type, c.NUM, c.Name, c.Credits, c.Required, c.Prec,
+               IFNULL(uc.taken, 0) AS taken
+        FROM classes c
+        LEFT JOIN userClasses uc ON c.id = uc.classId AND uc.userId = ?
+        ORDER BY c.id;
+    `;
+
+    db.all(sql, [userId], (err, rows) => {
+        if (err) {
+            console.error('Error fetching classes with taken status:', err.message);
+            return res.status(500).send('Internal Server Error');
+        }
+        res.json(rows);  // Send back the complete list of classes with the 'taken' status
+    });
+});
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
